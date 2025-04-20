@@ -1,0 +1,20 @@
+/* index.css or App.css */
+.star-layer {
+  background: transparent url('/stars.png') repeat;
+  background-size: contain;
+  opacity: 0.3;
+  filter: blur(0.6px);
+}
+
+@keyframes starMove {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 1000px;
+  }
+}
+
+.animate-starMove {
+  animation: starMove 60s linear infinite;
+}
