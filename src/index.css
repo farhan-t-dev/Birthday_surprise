@@ -1,6 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
 @import "tailwindcss";
 
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+@theme inline {
+  --animate-meteor-effect: meteor 5s linear infinite;
+ 
+  @keyframes meteor {
+    0% {
+      transform: rotate(215deg) translateX(0);
+      opacity: 1;
+    }
+    70% {
+      opacity: 1;
+    }
+    100% {
+      transform: rotate(215deg) translateX(-500px);
+      opacity: 0;
+    }
+  }
+}
 
 /* Floating heart style */
 .floating-heart {

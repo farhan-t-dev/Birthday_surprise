@@ -2,10 +2,13 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Typewriter } from "react-simple-typewriter";
-import Starfield from "./Starfield";
+import { Meteors } from "./Meteor";
 
-export default function WelcomeScreen({ onContinue }) {
+interface WelcomeScreenProps {
+  onContinue: () => void;
+}
 
+export default function WelcomeScreen({ onContinue }: WelcomeScreenProps) {
   const handleEnter = () => {
     setTimeout(() => {
       onContinue();
@@ -14,8 +17,6 @@ export default function WelcomeScreen({ onContinue }) {
 
   return (
     <div className="relative min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-[#0b0c2a] to-[#1a1a40] text-center px-4 overflow-hidden">
-      <Starfield />
-
       {/* Typewriter Heading */}
       <motion.h1
         initial={{ opacity: 0, y: -30 }}
@@ -24,7 +25,10 @@ export default function WelcomeScreen({ onContinue }) {
         className="text-3xl sm:text-5xl font-['Dancing_Script'] text-pink-200 z-10"
       >
         <Typewriter
-          words={['Shhh... Something special is waiting 🎁', 'Ready for a surprise?']}
+          words={[
+            "Shhh... Something special is waiting 🎁",
+            "Ready for a surprise?",
+          ]}
           loop={true}
           cursor
           cursorStyle="|"
@@ -40,8 +44,8 @@ export default function WelcomeScreen({ onContinue }) {
         transition={{ delay: 1.5, duration: 1 }}
         className="mt-6 text-pink-100 max-w-md text-base sm:text-lg z-10"
       >
-        You’ve just stepped into a world made just for you... ✨  
-        Tap the button below when you're ready 💫
+        You’ve just stepped into a world made just for you... ✨ Tap the button
+        below when you're ready 💫
       </motion.p>
 
       <motion.button
@@ -52,6 +56,9 @@ export default function WelcomeScreen({ onContinue }) {
       >
         Enter
       </motion.button>
+      {/* Meaty part - Meteor effect */}
+      <Meteors number={20} />
+
     </div>
   );
 }

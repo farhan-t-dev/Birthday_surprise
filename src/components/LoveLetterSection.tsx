@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { Boxes } from "./BackgroundBoxes"
 
 const letterText = `To the love that found me quietly,
 
@@ -30,9 +31,9 @@ export default function LoveLetterScene() {
   }, [started]);
 
   return (
-    <section className="relative h-screen bg-gradient-to-b from-[#1a1a40] to-[#0d0d2c] overflow-hidden px-4 py-20 flex flex-col items-center justify-center text-pink-100 font-['Great_Vibes']">
+    <section className="relative h-screen bg-gradient-to-b from-[#1a1a40] to-[#1a1a40] overflow-hidden px-4 py-20 flex flex-col items-center justify-center text-pink-100 font-['Great_Vibes']">
       {/* Meteor Shower Background */}
-
+      <Boxes />
 
       {/* Movie Scroll Reveal */}
       {!started && (
