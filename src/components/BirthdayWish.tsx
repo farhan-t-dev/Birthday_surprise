@@ -3,49 +3,37 @@ import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import Confetti from "react-confetti";
 import { useWindowSize } from "react-use";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { StarsBackground } from "./ui/Starry";
 
 export default function BirthdayWish() {
   const { width, height } = useWindowSize();
+  const [showConfetti, setShowConfetti] = useState(false);
 
   useEffect(() => {
-    const confettiContainer = document.getElementById("confetti-container");
-    const birthdayWish = document.getElementById("birthday-wish");
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          confettiContainer?.classList.remove("opacity-0", "pointer-events-none");
-          setTimeout(() => {
-            confettiContainer?.classList.add("opacity-0", "pointer-events-none");
-          }, 15000); // Confetti disappears after 5 seconds
-        }
-      },
-      {
-        threshold: 0.5, // Adjust based on how early/late you want it to disappear
-      }
-    );
-
-    if (birthdayWish) observer.observe(birthdayWish);
-
-    return () => observer.disconnect();
+    const timeout = setTimeout(() => setShowConfetti(true), 2500); // show after 2.5s
+    return () => clearTimeout(timeout);
   }, []);
 
   return (
     <section id="birthday-wish" className="relative overflow-hidden">
       <div className="min-h-screen flex flex-col items-center justify-center text-center bg-gradient-to-b from-[#0b0c2a] to-[#1a1a40] px-4 relative overflow-hidden">
-        <div
-          id="confetti-container"
-          className="absolute inset-0 z-10 transition-opacity duration-1000 opacity-0 pointer-events-none"
+        {/* Her photo */}
+        <motion.div
+          whileInView={{ opacity: 1, scale: 1, y: 0 }}
+          initial={{ opacity: 0, scale: 0.9, y: -20 }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
+          viewport={{ once: true }}
+          className="relative z-10 mb-10"
         >
-          <Confetti
-            width={width}
-            height={height}
-            numberOfPieces={200}
-            gravity={0.3}
-            tweenDuration={300}
+          {/* Photo */}
+          <img
+            src="/images/her-portrait.jpg"
+            alt="Her smiling portrait"
+            className="relative w-44 h-44 sm:w-56 sm:h-56 object-cover rounded-xl
+               border-4 border-pink-300 shadow-[0_0_25px_rgba(255,192,203,0.35)]"
           />
-        </div>
+        </motion.div>
         <motion.h1
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -68,6 +56,20 @@ export default function BirthdayWish() {
         <div className="absolute top-10 left-10 w-3 h-3 bg-pink-300 rounded-full blur-sm animate-pulse"></div>
         <div className="absolute bottom-12 right-10 w-2 h-2 bg-white rounded-full blur-sm animate-bounce"></div>
         <div className="absolute top-1/3 right-1/4 w-2.5 h-2.5 bg-yellow-300 rounded-full blur-md animate-ping"></div>
+
+        {/* Starry animation */}
+        <StarsBackground />
+
+        {/* Confetti Explosion */}
+        {showConfetti && (
+          <Confetti
+            width={width}
+            height={height}
+            numberOfPieces={450}
+            recycle={false}
+            gravity={0.5}
+          />
+        )}
 
         {/* Scroll Down Hint */}
         <motion.div

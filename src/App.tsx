@@ -5,6 +5,9 @@ import HerGallery from "./components/HerGallery";
 import RomanticQuotes from "./components/RomanticQuotes";
 import SecretVideoSection from "./components/VideoMessage";
 import LoveLetterSection from "./components/LoveLetterSection";
+import { ShootingStars } from "./components/ui/ShootingStars";
+// import StarDial from "./components/ui/StarDial";
+import MusicToggle from "./components/ui/MusicToggle";
 
 function App() {
   const [started, setStarted] = useState(false);
@@ -20,6 +23,8 @@ function App() {
           <HerGallery />
           <RomanticQuotes />
           <SecretVideoSection />
+          <ShootingStars />
+          <MusicToggle />
         </>
       )}
     </div>

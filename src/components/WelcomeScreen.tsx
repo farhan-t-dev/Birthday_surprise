@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Typewriter } from "react-simple-typewriter";
-import { Meteors } from "./Meteor";
+import { Meteors } from "./ui/Meteor";
 
 interface WelcomeScreenProps {
   onContinue: () => void;
@@ -57,7 +57,7 @@ export default function WelcomeScreen({ onContinue }: WelcomeScreenProps) {
         Enter
       </motion.button>
       {/* Meaty part - Meteor effect */}
-      <Meteors number={20} />
+      <Meteors number={20} className="z-0" />
 
     </div>
   );

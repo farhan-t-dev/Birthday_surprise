@@ -50,6 +50,8 @@ const SecretVideoSection = () => {
           className="relative w-full max-w-[600px] aspect-video rounded-3xl overflow-hidden shadow-2xl border border-pink-500/40 bg-pink-100/10 backdrop-blur-xl z-10"
         >
           <video
+            playsInline
+            muted
             controls
             className="w-full h-full object-cover"
             poster="/thumbnail.jpg"
@@ -63,16 +65,16 @@ const SecretVideoSection = () => {
         </motion.div>
       )}
       {/* Handwritten Signature */}
-{isVisible && (
-  <motion.p
-    initial={{ opacity: 0, y: 20 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 1, delay: 1.6 }}
-    className="mt-6 text-center text-pink-200 font-[signature] text-3xl md:text-4xl z-10"
-  >
-    — Farhan 💖
-  </motion.p>
-)}
+      {isVisible && (
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 1.6 }}
+          className="mt-6 text-center text-pink-200 font-[signature] text-3xl md:text-4xl z-10"
+        >
+          — Farhan 💖
+        </motion.p>
+      )}
     </section>
   );
 };

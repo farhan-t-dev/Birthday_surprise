@@ -1,41 +1,66 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Boxes } from "./BackgroundBoxes"
+import { StarsBackground } from "./ui/Starry";
+import { ShootingStars } from "./ui/ShootingStars";
 
-const letterText = `To the love that found me quietly,
+const letterText = `To the one I never saw coming, but now can't imagine a world without,
 
-There are stars, and then there's you—
-brighter, softer, and endlessly mine.
+I used to think love was loud — fireworks, grand gestures, something you chase.  
+But you... you arrived like a quiet sunrise.  
+Soft. Certain. And suddenly, everything made sense.  
 
-You don’t just exist in my world, you *are* my world.
-A thousand lifetimes wouldn’t be enough to thank the universe for you.
+You didn’t just steal my heart — you slipped into every corner of my life,  
+turning silence into comfort, chaos into calm,  
+and loneliness into something I forgot ever existed.
 
-Happy Birthday, my heart. This letter holds only a fraction of what I feel.
+I don’t say this enough — maybe because words always feel too small.  
+But you need to know:  
+There are pieces of me I never thought I’d share with anyone…  
+and yet, with you, I’ve handed over every one willingly.  
 
-— Yours, always
+Every laugh, every late-night thought, every version of me —  
+you have them all.  
+
+And if I’ve been quiet lately, it’s only because loving you this much scares me —  
+in the most beautiful, breathtaking way.  
+
+Happy Birthday, my heart.  
+This letter is more than ink and paper —  
+it’s everything I’ve ever felt and never said out loud.
+
+— Forever yours,  
 Farhan`;
 
+
 export default function LoveLetterScene() {
-  const [visibleText, setVisibleText] = useState("");
+  const [currentIndex, setCurrentIndex] = useState(0);
   const [started, setStarted] = useState(false);
+  const characters = letterText.split("");
 
   useEffect(() => {
     if (!started) return;
-    let i = 0;
+
     const interval = setInterval(() => {
-      setVisibleText((prev) => prev + letterText[i]);
-      i++;
-      if (i >= letterText.length) clearInterval(interval);
+      setCurrentIndex((prev) => {
+        if (prev >= characters.length) {
+          clearInterval(interval);
+          return prev;
+        }
+        return prev + 1;
+      });
     }, 35);
+
     return () => clearInterval(interval);
-  }, [started]);
+  }, [started, characters.length]);
+
+  const visibleText = characters.slice(0, currentIndex).join("");
 
   return (
-    <section className="relative h-screen bg-gradient-to-b from-[#1a1a40] to-[#1a1a40] overflow-hidden px-4 py-20 flex flex-col items-center justify-center text-pink-100 font-['Great_Vibes']">
-      {/* Meteor Shower Background */}
-      <Boxes />
+    <section className="relative min-h-screen bg-gradient-to-b from-[#1a1a40] to-[#1a1a40] overflow-x-hidden overflow-y-auto px-4 py-20 flex flex-col items-center text-pink-100 font-['Great_Vibes']">
 
-      {/* Movie Scroll Reveal */}
+      <StarsBackground />
+      <ShootingStars />
+
       {!started && (
         <motion.button
           onClick={() => setStarted(true)}
@@ -47,16 +72,19 @@ export default function LoveLetterScene() {
         </motion.button>
       )}
 
-      {/* Letter Reveal */}
       {started && (
         <motion.div
-          initial={{ opacity: 0, y: 100 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.5 }}
-          className="z-10 max-w-3xl w-full mt-8 bg-[#fff9f3] bg-opacity-80 backdrop-blur-xl shadow-2xl rounded-3xl p-8 md:p-12 border border-[#f3d7c3] text-[#5e3c3c] text-xl leading-relaxed tracking-wide"
-        >
-          <pre className="whitespace-pre-wrap font-['Courier_New']">{visibleText}</pre>
-        </motion.div>
+        initial={{ opacity: 0, y: 100 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.5 }}
+        className="z-10 max-w-3xl w-full mt-8 bg-[#fffdf8] bg-opacity-90 backdrop-blur-2xl shadow-[0_20px_60px_rgba(255,204,229,0.3)] rounded-3xl p-6 sm:p-10 md:p-12 border border-[#f3d7c3] text-[#5e3c3c] text-[1.1rem] sm:text-lg leading-8 sm:leading-9 tracking-wide font-['Courier_New'] relative overflow-hidden"
+      >
+        {/* soft paper grain effect (optional) */}
+        <div className="absolute inset-0 opacity-[0.03] pointer-events-none mix-blend-multiply"></div>
+      
+        <pre className="whitespace-pre-wrap z-10 relative">{visibleText}</pre>
+      </motion.div>
+      
       )}
     </section>
   );
