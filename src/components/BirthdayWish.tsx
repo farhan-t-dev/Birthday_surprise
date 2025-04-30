@@ -59,7 +59,7 @@ const PhotoFrame = ({ showSparkles }: { showSparkles: boolean }) => {
       {/* Main Photo */}
       <div className="relative w-full h-full">
         <img
-          src="src/assets/images/birthday_cutie.jpg"
+          src="public\images\birthday_cutie.jpg"
           alt="Her smiling portrait"
           className="w-full h-full object-cover rounded-xl border-4 border-pink-300/80
                    shadow-[0_0_30px_rgba(255,182,193,0.6)] hover:shadow-[0_0_50px_rgba(255,182,193,0.8)]
