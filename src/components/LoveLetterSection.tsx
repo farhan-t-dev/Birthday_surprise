@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { StarsBackground } from "./ui/Starry";
 import { ShootingStars } from "./ui/ShootingStars";
@@ -9,33 +9,34 @@ I used to think love was loud — fireworks, grand gestures, something you chase
 But you... you arrived like a quiet sunrise.  
 Soft. Certain. And suddenly, everything made sense.  
 
-You didn’t just steal my heart — you slipped into every corner of my life,  
+You didn't just steal my heart — you slipped into every corner of my life,  
 turning silence into comfort, chaos into calm,  
 and loneliness into something I forgot ever existed.
 
-I don’t say this enough — maybe because words always feel too small.  
+I don't say this enough — maybe because words always feel too small.  
 But you need to know:  
-There are pieces of me I never thought I’d share with anyone…  
-and yet, with you, I’ve handed over every one willingly.  
+There are pieces of me I never thought I'd share with anyone…  
+and yet, with you, I've handed over every one willingly.  
 
 Every laugh, every late-night thought, every version of me —  
 you have them all.  
 
-And if I’ve been quiet lately, it’s only because loving you this much scares me —  
+And if I've been quiet lately, it's only because loving you this much scares me —  
 in the most beautiful, breathtaking way.  
 
 Happy Birthday, my heart.  
 This letter is more than ink and paper —  
-it’s everything I’ve ever felt and never said out loud.
+it's everything I've ever felt and never said out loud.
 
 — Forever yours,  
 Farhan`;
 
-
 export default function LoveLetterScene() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [started, setStarted] = useState(false);
+  const [inkLevel, setInkLevel] = useState(100);
   const characters = letterText.split("");
+  const letterRef = useRef(null);
 
   useEffect(() => {
     if (!started) return;
@@ -46,6 +47,8 @@ export default function LoveLetterScene() {
           clearInterval(interval);
           return prev;
         }
+        // Randomly decrease ink level as typing progresses
+        if (Math.random() > 0.7) setInkLevel(prev => Math.max(prev - 0.3, 30));
         return prev + 1;
       });
     }, 35);
@@ -62,29 +65,74 @@ export default function LoveLetterScene() {
       <ShootingStars />
 
       {!started && (
-        <motion.button
-          onClick={() => setStarted(true)}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          className="z-10 bg-[#ffe8e8] text-[#5e3c3c] px-8 py-4 rounded-xl text-2xl shadow-lg backdrop-blur-md ring-1 ring-pink-200/30 font-['Dancing_Script'] transition-all"
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5 }}
+          className="flex flex-col items-center gap-8"
         >
-          Read The Letter
-        </motion.button>
+          <motion.div
+            animate={{ 
+              rotate: [0, -5, 5, -5, 0],
+              y: [0, -10, -10, -10, 0]
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              repeatDelay: 3
+            }}
+          >
+            <svg className="w-24 h-24 text-pink-300" viewBox="0 0 24 24">
+              <path fill="currentColor" d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z" />
+            </svg>
+          </motion.div>
+          <motion.button
+            onClick={() => setStarted(true)}
+            whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(255, 182, 193, 0.6)" }}
+            whileTap={{ scale: 0.95 }}
+            className="z-10 bg-gradient-to-br from-[#ffe8e8] to-[#ffd6e7] text-[#5e3c3c] px-8 py-4 rounded-xl text-2xl shadow-lg backdrop-blur-md ring-1 ring-pink-200/30 font-['Dancing_Script'] transition-all hover:shadow-pink-200/40"
+          >
+            Open Your Letter
+          </motion.button>
+          <motion.p 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.7 }}
+            transition={{ delay: 1.5 }}
+            className="text-pink-300/70 text-sm mt-4"
+          >
+            (click the button above)
+          </motion.p>
+        </motion.div>
       )}
 
       {started && (
         <motion.div
-        initial={{ opacity: 0, y: 100 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1.5 }}
-        className="z-10 max-w-3xl w-full mt-8 bg-[#fffdf8] bg-opacity-90 backdrop-blur-2xl shadow-[0_20px_60px_rgba(255,204,229,0.3)] rounded-3xl p-6 sm:p-10 md:p-12 border border-[#f3d7c3] text-[#5e3c3c] text-[1.1rem] sm:text-lg leading-8 sm:leading-9 tracking-wide font-['Courier_New'] relative overflow-hidden"
-      >
-        {/* soft paper grain effect (optional) */}
-        <div className="absolute inset-0 opacity-[0.03] pointer-events-none mix-blend-multiply"></div>
-      
-        <pre className="whitespace-pre-wrap z-10 relative">{visibleText}</pre>
-      </motion.div>
-      
+          initial={{ opacity: 0, y: 100 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.5 }}
+          className="z-10 max-w-3xl w-full mt-8 bg-[#fffdf8] bg-opacity-90 backdrop-blur-2xl shadow-[0_20px_60px_rgba(255,204,229,0.3)] rounded-3xl p-6 sm:p-10 md:p-12 border border-[#f3d7c3] text-[#5e3c3c] text-[1.1rem] sm:text-lg leading-8 sm:leading-9 tracking-wide font-['Courier_New'] relative overflow-hidden"
+          ref={letterRef}
+        >
+          {/* Inkwell indicator */}
+          <div className="absolute top-6 right-6 flex items-center gap-2 bg-white/80 backdrop-blur-sm px-3 py-1 rounded-full shadow-sm border border-[#f3d7c3]">
+            <svg className="w-5 h-5" viewBox="0 0 24 24">
+              <path fill={`hsl(330, 50%, ${inkLevel}%)`} d="M18.5,2H5.5A1.5,1.5 0 0,0 4,3.5V20.5A1.5,1.5 0 0,0 5.5,22H18.5A1.5,1.5 0 0,0 20,20.5V3.5A1.5,1.5 0 0,0 18.5,2M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z" />
+            </svg>
+            <span className="text-xs font-mono text-[#5e3c3c]">{Math.round(inkLevel)}% ink</span>
+          </div>
+
+          {/* soft paper grain effect */}
+          <div className="absolute inset-0 opacity-[0.03] pointer-events-none mix-blend-multiply"></div>
+        
+          <pre 
+            className="whitespace-pre-wrap z-10 relative"
+            style={{ 
+              filter: `brightness(${inkLevel/100 + 0.5}) contrast(${inkLevel/50 + 1})`
+            }}
+          >
+            {visibleText}
+          </pre>
+        </motion.div>
       )}
     </section>
   );
