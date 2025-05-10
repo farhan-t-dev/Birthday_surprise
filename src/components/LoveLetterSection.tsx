@@ -60,7 +60,7 @@ export default function LoveLetterScene() {
   const visibleText = characters.slice(0, currentIndex).join("");
 
   return (
-    <section className="relative min-h-screen bg-gradient-to-b from-[#1a1a40] to-[#1a1a40] overflow-x-hidden overflow-y-auto px-4 py-20 flex flex-col items-center text-pink-100 font-['Great_Vibes']">
+    <section className="relative min-h-screen bg-gradient-to-b from-[#1a1a40] to-[#1a1a40] overflow-x-hidden overflow-y-auto px-4 py-20 flex flex-col items-center text-pink-100 font-['Schoolbell']">
       <StarsBackground />
       <ShootingStars />
 
@@ -116,7 +116,7 @@ export default function LoveLetterScene() {
           initial={{ opacity: 0, y: 80 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
-          className="z-10 max-w-3xl w-full mt-8 bg-[#fffdf8] bg-opacity-90 backdrop-blur-2xl shadow-[0_20px_60px_rgba(255,204,229,0.3)] rounded-3xl p-6 sm:p-10 md:p-12 border border-[#f3d7c3] text-[#5e3c3c] text-[1.1rem] sm:text-lg leading-8 sm:leading-9 tracking-wide font-['Courier_New'] relative overflow-hidden"
+          className="z-10 max-w-3xl w-full mt-8 bg-[#fffdf8] bg-opacity-90 backdrop-blur-2xl shadow-[0_20px_60px_rgba(255,204,229,0.3)] rounded-3xl p-6 sm:p-10 md:p-12 border border-[#f3d7c3] text-[#5e3c3c] text-[1.1rem] sm:text-lg leading-8 sm:leading-9 tracking-wide font-['Schoolbell'] relative overflow-hidden"
           ref={letterRef}
         >
           {/* Unified ink indicator positioning */}
@@ -135,7 +135,7 @@ export default function LoveLetterScene() {
           {/* Text container with consistent padding */}
           <div className="relative z-10 pt-0">
             <pre
-              className="whitespace-pre-wrap break-words"
+              className="whitespace-pre-wrap break-words font-['Schoolbell']"
               style={{
                 filter: `brightness(${Math.max(
                   inkLevel / 100 + 0.5,
