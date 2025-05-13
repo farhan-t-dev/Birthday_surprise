@@ -22,6 +22,12 @@ const playlist: Track[] = [
   { src: "/music/a-thousand-years.mp3",        title: "Thousand Years" },
   { src: "/music/ed-sheeran-perfect.mp3",      title: "Perfect" },
   { src: "/music/i-love-you-3000.mp3",         title: "I Love You 3000" },
+  { src: "/music/tumi-amar-onek-shokher.mp3",         title: "Tumi amar onek shokher" },
+  { src: "/music/tomake-chai.mp3",         title: "Tomake Chai" },
+  { src: "/music/blue.mp3",         title: "Blue" },
+  { src: "/music/its-you.mp3",         title: "Its You" },
+  { src: "/music/love-you-with-all-my-heart.mp3",         title: "Love you with all my heart" },
+  { src: "/music/spring-snow.mp3",         title: "Spring Snow" },
 ];
 
 export const AudioProvider = ({ children }: { children: React.ReactNode }) => {

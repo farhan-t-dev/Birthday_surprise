@@ -11,7 +11,7 @@ const TypewriterMessages = memo(() => (
   <div className="min-h-[4.5rem] sm:min-h-[6rem]"> {/* Fixed height container */}
     <Typewriter
       words={[
-        "Shhh... Something special is waiting 🎁",
+        "Shhh... Something special is waiting for you insidee 🎁",
         "Ready for a surprise?",
       ]}
       loop={true}
@@ -113,7 +113,7 @@ export default function WelcomeScreen({ onContinue }: WelcomeScreenProps) {
             <motion.p
               className="text-pink-100/90 text-base sm:text-lg mt-4"
             >
-              You've just stepped into a world made just for you... ✨<br />
+              You've just stepped into a world made just for you cutiee... ✨<br />
               Tap the button below when you're ready 💫
             </motion.p>
           </motion.div>

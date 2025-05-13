@@ -4,15 +4,18 @@ import { useEffect, useState } from "react";
 import { Check, Clipboard } from "lucide-react";
 
 const quotes = [
-  { book: "The Spanish Deception", quote: "I don’t think I’ve ever wanted something as much as I want you right now." },
-  { book: "The Shattered Series",   quote: "You weren’t just a chapter. You were the whole damn book." },
-  { book: "Twisted Love",           quote: "Every path I take still leads me back to you." },
-  { book: "The Love Hypothesis",    quote: "In a universe of variables, you are my one constant." },
-  { book: "Beach Read",             quote: "You feel like every good day I’ve ever had, all at once." },
-  { book: "People We Meet...",      quote: "Home stopped being a place the moment it became a person—and that person was you." },
-  { book: "The Shattered Series",   quote: "You shattered my loneliness, not just my walls." },
-  { book: "The Spanish Deception",  quote: "I’ve never felt anything like this—like I could fall and you’d catch me every time." },
+  { book: "The Spanish Deception", quote: "I’ve never wanted anything the way I want a future with you—even on the quiet days." },
+  { book: "The Shattered Series",   quote: "You weren’t just a chapter. You became the story I never want to end." },
+  { book: "Twisted Love",           quote: "No matter how far I wander, my heart finds its way back to you—every time." },
+  { book: "The Love Hypothesis",    quote: "In a world full of unknowns, loving you is the one thing that’s always certain." },
+  { book: "Beach Read",             quote: "You feel like sunlight after a lifetime of winters—warm, steady, and mine." },
+  { book: "People We Meet...",      quote: "Home isn’t a place anymore. It’s your voice, your laugh, your name." },
+  { book: "Farhan T.", quote: "Even across the distance, you feel closer to me than most people ever standing beside me." },
+  { book: "The Shattered Series",   quote: "You didn’t just break down my walls—you built something beautiful in their place." },
+  { book: "The Spanish Deception",  quote: "With you, falling doesn’t feel like a risk. It feels like landing where I was always meant to be." },
+  { book: "Farhan T.", quote: "Loving you feels less like something I chose and more like something the universe quietly whispered into my soul." }
 ];
+
 
 export default function RomanticQuotes() {
   /* small toast state for copy feedback */
@@ -71,7 +74,7 @@ export default function RomanticQuotes() {
             className="break-inside-avoid group rounded-2xl bg-gradient-to-br from-[#24244a] to-[#1a1a38] p-[2px] hover:shadow-pink-400/25"
           >
             <div className="rounded-2xl bg-[#1a1a38]/70 backdrop-blur-md p-5 sm:p-6 hover:rotate-[2deg] transition-transform duration-300">
-              <p className="text-lg sm:text-xl leading-relaxed text-pink-100 italic">
+              <p className="text-lg sm:text-xl leading-relaxed text-pink-100">
                 “{q.quote}”
               </p>
               <div className="mt-4 flex items-center justify-between">

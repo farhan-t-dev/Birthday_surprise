@@ -59,7 +59,7 @@ const PhotoFrame = ({ showSparkles }: { showSparkles: boolean }) => {
       {/* Main Photo */}
       <div className="relative w-full h-full">
         <img
-          src="/images/birthday_cutie.jpg"
+          src="/images/cutie_red.jpg"
           alt="Her smiling portrait"
           className="w-full h-full object-cover rounded-xl border-4 border-pink-300/80
                    shadow-[0_0_30px_rgba(255,182,193,0.6)] hover:shadow-[0_0_50px_rgba(255,182,193,0.8)]
@@ -180,7 +180,7 @@ export default function BirthdayWish() {
           className="text-4xl sm:text-5xl md:text-6xl font-['Dancing_Script'] text-pink-200"
           whileHover={{ scale: 1.05 }}
         >
-          Happy Birthday, My Shining Star 🌟
+          Happy Birthday, My Beautifulestt Starr 🌟
         </motion.h1>
 
         <motion.p
@@ -189,7 +189,7 @@ export default function BirthdayWish() {
           transition={{ delay: 1.5, duration: 1.4 }}
           className="mt-4 text-lg sm:text-xl max-w-md text-pink-100"
         >
-          May your day be as magical as you've made mine every day{' '}
+          May your day be as magical as you always makee mine every day babyy{' '}
           <motion.span
             animate={{ scale: [1, 1.3, 1] }}
             transition={{ duration: 2, repeat: Infinity }}

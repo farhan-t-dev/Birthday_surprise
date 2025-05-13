@@ -5,28 +5,28 @@ import { ShootingStars } from "./ui/ShootingStars";
 
 const letterText = `To the one I never saw coming, but now can't imagine a world without,
 
-I used to think love was loud — fireworks, grand gestures, something you chase.  
-But you... you arrived like a quiet sunrise.  
-Soft. Certain. And suddenly, everything made sense.  
+I used to think love was loudd likee fireworks, grand gestures, something you chase.  
+But you... you arrived like a quiet sunrise on a random new year's eve.  
+Soft. Certain. And suddenlyy, everything made sensee.  
 
-You didn't just steal my heart — you slipped into every corner of my life,  
-turning silence into comfort, chaos into calm,  
-and loneliness into something I forgot ever existed.
+You didn't just steal my heart cutiee you litterally slipped into every corner of my life,  
+turning silence into comfortt, chaos into calm,  
+and loneliness into something I forgot that ever existedd.
 
-I don't say this enough — maybe because words always feel too small.  
-But you need to know:  
-There are pieces of me I never thought I'd share with anyone…  
-and yet, with you, I've handed over every one willingly.  
+I don't say this enough at all maybe because words always feel too small and i cant really express.  
+But you need to know cutiee:  
+There are pieces of me I never thought I'd share with anyone at all…  
+and yet, with you my babyy, I've handed over every one willingly without a secondd thoughtt.  
 
-Every laugh, every late-night thought, every version of me —  
-you have them all.  
+Every laugh, every late-night thoughtt, every version of me —  
+you have them all honeyybee.  
 
-And if I've been quiet lately, it's only because loving you this much scares me —  
-in the most beautiful, breathtaking way.  
+And if I've been quiet latelyy, it's only because loving you this much scares me —  
+in the most beautifully, breathtaking wayy.  
 
-Happy Birthday, my heart.  
-This letter is more than ink and paper —  
-it's everything I've ever felt and never said out loud.
+Happieestt Birthday, my Heartt.  
+This letter is more than ink and paperr —  
+it's somee off everything I've ever felt and never said out loudd.
 
 — Forever yours,  
 Farhan`;
