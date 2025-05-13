@@ -7,14 +7,21 @@ import { useEffect, useState, useCallback, memo } from "react";
 import { StarsBackground } from "./ui/Starry";
 
 const FloatingDecorations = memo(() => {
-  const colors = ["bg-pink-300", "bg-purple-300", "bg-yellow-300", "bg-blue-300"];
-  
+  const colors = [
+    "bg-pink-300",
+    "bg-purple-300",
+    "bg-yellow-300",
+    "bg-blue-300",
+  ];
+
   return (
     <>
       {[...Array(8)].map((_, i) => (
         <motion.div
           key={i}
-          className={`absolute ${colors[i % colors.length]} rounded-full blur-sm`}
+          className={`absolute ${
+            colors[i % colors.length]
+          } rounded-full blur-sm`}
           style={{
             width: `${Math.random() * 3 + 2}px`,
             height: `${Math.random() * 3 + 2}px`,
@@ -45,7 +52,7 @@ const PhotoFrame = ({ showSparkles }: { showSparkles: boolean }) => {
   useEffect(() => {
     controls.start({
       rotate: [0, -3, 3, 0], // Softer wobble
-      transition: { duration: 1.5 }
+      transition: { duration: 1.5 },
     });
   }, [controls]);
 
@@ -72,10 +79,10 @@ const PhotoFrame = ({ showSparkles }: { showSparkles: boolean }) => {
             key={i}
             className="absolute text-pink-400/90"
             style={{
-              left: '50%',
-              top: '50%',
-              x: `${Math.cos((i * 45) * Math.PI/180) * 110}px`,
-              y: `${Math.sin((i * 45) * Math.PI/180) * 110}px`,
+              left: "50%",
+              top: "50%",
+              x: `${Math.cos((i * 45 * Math.PI) / 180) * 110}px`,
+              y: `${Math.sin((i * 45 * Math.PI) / 180) * 110}px`,
             }}
             animate={{
               scale: [0.8, 1.2, 0.8],
@@ -86,7 +93,7 @@ const PhotoFrame = ({ showSparkles }: { showSparkles: boolean }) => {
               delay: i * 0.15,
               duration: 2.5,
               repeat: Infinity,
-              ease: "easeInOut"
+              ease: "easeInOut",
             }}
           >
             <Heart className="w-7 h-7 fill-pink-400/40" />
@@ -96,7 +103,7 @@ const PhotoFrame = ({ showSparkles }: { showSparkles: boolean }) => {
 
       {/* Sparkles */}
       {showSparkles && (
-        <motion.div 
+        <motion.div
           className="absolute inset-0 pointer-events-none"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -117,7 +124,7 @@ const PhotoFrame = ({ showSparkles }: { showSparkles: boolean }) => {
                 delay: Math.random() * 2,
                 duration: 1.5,
                 repeat: Infinity,
-                repeatDelay: Math.random() * 5
+                repeatDelay: Math.random() * 5,
               }}
             >
               <Sparkles className="w-3 h-3" />
@@ -189,7 +196,7 @@ export default function BirthdayWish() {
           transition={{ delay: 1.5, duration: 1.4 }}
           className="mt-4 text-lg sm:text-xl max-w-md text-pink-100"
         >
-          May your day be as magical as you always makee mine every day babyy{' '}
+          May your day be as magical as you always makee mine every day babyy{" "}
           <motion.span
             animate={{ scale: [1, 1.3, 1] }}
             transition={{ duration: 2, repeat: Infinity }}
@@ -197,6 +204,14 @@ export default function BirthdayWish() {
           >
             ✨
           </motion.span>
+        </motion.p>
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 2.8, duration: 1.2 }}
+          className="mt-2 text-sm sm:text-base text-pink-200 italic"
+        >
+          (Psst... alsoo don’t forget to play the music 🎶 it’s part of the magic.)
         </motion.p>
 
         <FloatingDecorations />
@@ -210,7 +225,7 @@ export default function BirthdayWish() {
             numberOfPieces={300}
             recycle={false}
             gravity={0.5}
-            colors={['#ff9ff3', '#feca57', '#ff6b6b', '#48dbfb']}
+            colors={["#ff9ff3", "#feca57", "#ff6b6b", "#48dbfb"]}
             onConfettiComplete={() => setShowConfetti(false)}
           />
         )}
